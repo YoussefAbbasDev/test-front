@@ -1,0 +1,70 @@
+@import '@fontsource/poppins/300.css';
+@import '@fontsource/poppins/400.css';
+@import '@fontsource/poppins/500.css';
+@import '@fontsource/poppins/600.css';
+@import '@fontsource/tajawal/400.css';
+@import '@fontsource/tajawal/500.css';
+@import '@fontsource/tajawal/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SEEDA brand tokens (from the identity guide: PANTONE P96-16C purple, P103-15C navy, stationery gray) */
+:root {
+  --brand-50: 246 243 251;
+  --brand-100: 236 231 247;
+  --brand-200: 215 205 238;
+  --brand-300: 186 170 222;
+  --brand-400: 141 119 196;
+  --brand-500: 110 87 172;
+  --brand-600: 90 66 147;   /* #5A4293 primary */
+  --brand-700: 75 54 124;
+  --brand-800: 60 43 99;
+  --brand-900: 44 32 73;
+  --navy-500: 74 92 138;
+  --navy-600: 58 75 117;
+  --navy-700: 45 61 98;     /* #2D3D62 */
+  --navy-800: 34 47 76;
+  --navy-900: 24 33 54;
+  --surface: 255 255 255;
+  --canvas: 246 246 250;
+  --line: 230 230 238;
+  --ink: 31 36 51;
+  --ink-soft: 78 84 102;
+  --ink-muted: 138 143 158;
+  --success: 34 160 107;
+  --warning: 217 144 30;
+  --danger: 214 69 80;
+  --info: 59 130 246;
+}
+
+html { -webkit-font-smoothing: antialiased; }
+body { @apply bg-canvas text-ink font-sans; }
+[dir='rtl'] body { font-family: 'Tajawal', 'Poppins', system-ui, sans-serif; }
+
+@layer components {
+  .card { @apply bg-surface rounded-2xl shadow-card; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 h-10 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-300; }
+  .btn-primary { @apply btn bg-brand-600 text-white hover:bg-brand-700; }
+  .btn-secondary { @apply btn bg-brand-50 text-brand-700 hover:bg-brand-100; }
+  .btn-ghost { @apply btn text-ink-soft hover:bg-canvas; }
+  .btn-danger { @apply btn bg-danger text-white hover:opacity-90; }
+  .btn-outline { @apply btn border border-line text-ink-soft bg-surface hover:bg-canvas; }
+  .btn-sm { @apply h-8 px-3 text-xs rounded-lg; }
+  .input { @apply w-full h-10 rounded-xl border border-line bg-surface px-3 text-sm text-ink placeholder:text-ink-muted focus:border-brand-400 focus:ring-2 focus:ring-brand-100 focus:outline-none disabled:bg-canvas; }
+  .label { @apply block text-xs font-medium text-ink-soft mb-1.5; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium; }
+  .table-head { @apply text-start text-xs font-medium text-ink-muted px-4 py-3 whitespace-nowrap; }
+  .table-cell { @apply px-4 py-3 text-sm text-ink whitespace-nowrap; }
+}
+
+/* print: payslip / reports */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+  .print-area { box-shadow: none !important; margin: 0 !important; }
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgb(var(--line)); border-radius: 8px; }
